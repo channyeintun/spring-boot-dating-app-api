@@ -53,7 +53,7 @@ public class DatingApplication {
                 .setDatabaseUrl("https://pledge-ed908-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .setDatabaseAuthVariableOverride(null)
                 .build();
-        FirebaseApp app = FirebaseApp.initializeApp(firebaseOptions, "pledge");
+        FirebaseApp app = FirebaseApp.initializeApp(firebaseOptions, "your-app-name");
         return FirebaseMessaging.getInstance(app);
     }
 }
