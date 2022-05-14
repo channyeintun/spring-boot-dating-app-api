@@ -7,7 +7,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
-import com.pledge.app.config.s3.BucketName;
+import com.pledge.app.config.s3.Bucket;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -64,7 +64,7 @@ public class FileStore {
             String[] keys = key.split("/");
             amazonS3.deleteObject(
                     new DeleteObjectRequest(
-                            BucketName.USER_IMAGE.getBucketName(), keys[1] + "/" + keys[2]));
+                            Bucket.MY_BUCKET.getName(), keys[1] + "/" + keys[2]));
         } catch (AmazonServiceException e) {
             throw new IllegalStateException("Failed to delete image");
         }

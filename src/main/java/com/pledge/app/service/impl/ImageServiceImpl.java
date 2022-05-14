@@ -1,6 +1,6 @@
 package com.pledge.app.service.impl;
 
-import com.pledge.app.config.s3.BucketName;
+import com.pledge.app.config.s3.Bucket;
 import com.pledge.app.dao.ImageDAO;
 import com.pledge.app.entity.Image;
 import com.pledge.app.entity.User;
@@ -56,7 +56,7 @@ public class ImageServiceImpl implements ImageService {
             metadata.put("Content-Type", file.getContentType());
             metadata.put("Content-Length", String.valueOf(file.getSize()));
             //Save Image in S3 and then save image in the database
-            String path = String.format("%s/%s", BucketName.USER_IMAGE.getBucketName(), UUID.randomUUID());
+            String path = String.format("%s/%s", Bucket.MY_BUCKET.getName(), UUID.randomUUID());
             String fileName = String.format("%s", file.getOriginalFilename());
             try {
                 fileStore.upload(path, fileName, Optional.of(metadata), file.getInputStream());
